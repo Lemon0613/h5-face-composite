@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>特别的七夕--SWM斯威汽车</title>
+    <link rel="stylesheet" href="http://cdn5.iforce-media.com/Public/css/swiper-3.4.0.min.css">
+    <link rel="stylesheet" href="http://cdn5.iforce-media.com/Public/css/animate.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+<!--loading-->
+<div class="loading">
+    <div class="loader">Loading...</div>
+    <p class="loadnum">0%</p>
+</div>
+
+<!--container-->
+<div class="wrapper">
+    <!--默认首页-->
+    <div class="page1 success-page">
+        <div class="csBox" width="750" height="1136" left="0" top="0"><img src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/bg02.jpg"></div>
+        <div class="csBox light" width="257" height="202" left="202" top="56"><img class="flashAni" src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/light01.png"></div>
+        <div class="csBox light" width="257" height="202" left="292" top="56"><img class="flashAni" src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/light02.png"></div>
+        <div class="csBox success-tips" width="244" height="42" left="255" top="333"><img src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/success-tips.png"></div>
+        <div class="csBox vote-tips" width="479" height="44" left="132" top="333"><img src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/vote-tips.png"></div>
+        <div class="csBox my-test" width="432" height="85" left="156" top="586"><img src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/my-test.png"></div>
+        <div class="csBox zan-btn" width="345" height="85" left="207" top="730"><img src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/help-btn.png"></div>
+        <div class="csBox rank-btn" width="432" height="85" left="156" top="873"><img src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/rank-btn.png"></div>
+        <div class="csBox close-page1" width="62" height="62" left="615" top="70"><img src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/close.png"></div>
+    </div>
+    <!--投票页面-->
+    <div class="page vote-page">
+        <div class="csBox" width="750" height="1136" left="0" top="0"><img src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/test-bg.jpg"></div>
+        <div class="csBox yuanfen" width="312" height="125" left="56" top="188" id="double_pre">90%</div>
+        <div class="csBox zan-number" width="128" height="128" left="536" top="204" id="double_vote">50</div>
+        <div class="csBox show01" width="305" height="462" left="65" top="453"><img id="double_left" src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/com-pic.jpg"></div>
+        <div class="csBox show02" width="305" height="462" left="387" top="453"><img id="double_right" src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/com-pic.jpg"></div>
+        <div class="csBox zan-btn" width="432" height="85" left="160" top="978"><img src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/zan-btn.png"></div>
+    </div>
+    <!--排行榜-->
+    <div class="page rank-page">
+        <div class="csBox" width="750" height="1136" left="0" top="0"><img src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/rank-bg.jpg"></div>
+        <div class="csBox light" width="257" height="202" left="115" top="56"><img class="flashAni" src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/light01.png"></div>
+        <div class="csBox light" width="257" height="202" left="382" top="56"><img class="flashAni" src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/light02.png"></div>
+        <div class="csBox rank-list" width="610" height="655" left="70" top="352">
+            <ul id="rank_list"></ul>
+        </div>
+        <div class="csBox more-btn" width="134" height="32" left="309" top="1006"><img src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/more-btn.png"></div>
+        <div class="csBox close-rank" width="50" height="50" left="630" top="290"><img src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/close.png"></div>
+    </div>
+
+    <!--分享弹窗-->
+    <div class="page share-page">
+        <div class="csBox" width="750" height="1136" left="0" top="0"><img src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/share-tip.png"></div>
+        <div class="csBox" width="750" height="1136" left="0" top="0"><img src="http://cdn5.iforce-media.com/2017/siwei_qixi/img/share-tip.png"></div>
+    </div>
+
+</div>
+
+
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="/Public/js/bfscs_jssdk.js"></script>
+<!-- <script src="/Public/js/vconsole.min.js"></script> -->
+
+<script src="http://cdn5.iforce-media.com/Public/js/jquery-3.1.0.min.js"></script>
+<script src="http://cdn5.iforce-media.com/Public/js/msTools/msTools-1.0.3.min.js"></script>
+<script src="http://cdn5.iforce-media.com/Public/js/layer.mobile.js"></script>
+<script>
+    var isgetRank=false;
+    $(function () {
+        ms.reSet();
+
+        var imgArray =['http://cdn5.iforce-media.com/2017/siwei_qixi/img/bg02.jpg','http://cdn5.iforce-media.com/2017/siwei_qixi/img/com-pic.jpg','http://cdn5.iforce-media.com/2017/siwei_qixi/img/test-bg.jpg','http://cdn5.iforce-media.com/2017/siwei_qixi/img/rank-bg.jpg','http://cdn5.iforce-media.com/2017/siwei_qixi/img/share-tip.png',
+            'http://cdn5.iforce-media.com/2017/siwei_qixi/img/light01.png','http://cdn5.iforce-media.com/2017/siwei_qixi/img/light02.png'];
+        ms.loadings(imgArray, true, function (obj) {
+            $(".loadnum").html(obj.bfb + "%")
+            if (obj.bfb > 95) {
+                setTimeout(function () {
+                    $(".loading").fadeOut(350);
+                    $(".wrapper").fadeIn(500);
+                }, 1200)
+            }
+        })
+
+        //--------------------分享设置---------------
+        var url = JSSDK.url;
+        var link = url + '/2017/siwei_qixi/index.php';
+        var tit = "特别的七夕--斯威汽车";
+        var doc = "500年后我们的心灵磁场感应度居然这么高？";
+        var img = url + "/2017/siwei_qixi/img/share-img.jpg";
+        JSSDK.init(tit, doc, link, img, false);
+
+        //--------------------微信授权---------------
+        o_id = ms.getCookie('o_id');
+        is_all = ms.getCookie('is_all'); //是否填写信息
+        code = ms.getArg("code");
+
+        // 分享页面直接获取图片信息
+        $.ajax({
+            type: 'POST',
+            url: "common.php",
+            data: {
+                get: 'setUser',
+                code: code,
+                type:ms.getArg("type"),
+                img_id:ms.getArg("imgs"),
+            },
+            dataType: 'json',
+            success: function(data) {
+                if(data.imginfo){
+                    var res = data.imginfo;
+                    $('#double_left').attr('src',res.img_left);
+                    $('#double_right').attr('src',res.img_right);
+                    $('#double_pre').text(res.prence+'%');
+                    $('#double_vote').text(res.vote_num);
+                 
+                }
+                if(data == -2) {
+                    if(isOpenID(o_id) == false) {
+                        layer.open({
+                            content: "获取身份信息失败！",
+                            btn: '确定'
+                        });
+                    }
+
+                } else if(data == -3) {
+                    if(isOpenID(o_id) == false) {
+                        layer.open({
+                            content: "获取身份信息失败！",
+                            btn: '确定'
+                        });
+                    }
+                } else if(data.status == 1) {
+
+                    o_id = data.openid;
+                    is_all = data.is_all;
+                    o_name = data.nickname;
+                    ms.setCookie('o_id', o_id);
+                    ms.setCookie('is_all', is_all);
+                    ms.setCookie('o_name', o_name);
+
+                }
+            },
+            error: function(e) {
+                layer.open({
+                    content: "网络不是很通畅，稍后再试哦！",
+                    btn: '确定'
+                });
+            }
+        });
+        //----------------------------------------
+
+
+        // 分享页显示页面
+        // var type=ms.getArg("type");
+        // if(o_id){
+        //      $.ajax({
+        //         type: 'POST',
+        //         url: "common.php",
+        //         data: {
+        //             get: 'imgInfo',
+        //             uid: o_id,
+        //             type:ms.getArg("type"),
+        //             img_id:ms.getArg("imgs"),
+        //         },
+        //         dataType: 'json',
+        //         success: function(data) {
+        //             // console.log(data);
+        //             if(data.status != 1){
+        //                  layer.open({
+        //                     content: data.msg,
+        //                     btn: '确定'
+        //                 });
+        //                  return false;
+        //             }
+        //             var res = data.data;
+        //             if(type == 1){
+        //                 // 个人单张图片
+        //                 // $('#single_pic').attr('src',res.imgs);
+        //                 // $('#single_num').text(res.num);
+        //                 // $('#single_name').text(res.nickname);
+        //                 // $('#single_head').attr('src',res.headimg_url);
+        //             }else{
+        //                 // 匹配的图片
+        //                 $('#double_left').attr('src',res.img_left);
+        //                 $('#double_right').attr('src',res.img_right);
+        //                 // $('#double_name').text(res.nickname);
+        //                 $('#double_pre').text(res.prence+'%');
+        //                 $('#double_vote').text(res.vote_num);
+        //                 // $('#double_num').text(res.num);
+                       
+        //             }
+        //         },
+        //         error: function(e) {
+        //             layer.open({
+        //                 content: "网络不是很通畅，稍后再试哦！",
+        //                 btn: '确定'
+        //             });
+        //         }
+        //     });
+        // }
+       
+
+
+
+        $('.zan-btn').click(function () {
+            // 点赞
+            var img_id = ms.getArg('imgs');
+            $.ajax({
+                type: 'POST',
+                url: "common.php",
+                data: {
+                    get: 'voteInfo',
+                    uid: o_id,
+                    img_id:img_id,
+                },
+                dataType: 'json',
+                success: function(data) {
+                    if(data.status == 1){
+                        layer.open({
+                            content: data.msg,
+                            btn: '确定'
+                        });
+                        $('.vote-page').fadeOut(350);
+                        $('.success-page').fadeIn(350); 
+                    }else if(data.status == -4){
+                        layer.open({
+                            content: data.msg,
+                            btn: '确定'
+                        });
+                        $('.success-tips').hide();
+                        $('.vote-tips').show();
+                        $('.vote-page').fadeOut(350);
+                        $('.success-page').fadeIn(350);
+                    } else {
+                        layer.open({
+                            content: data.msg,
+                            btn: '确定'
+                        });
+                        return false;
+                    }
+                },
+                error: function(e) {
+                    layer.open({
+                        content: "网络不是很通畅，稍后再试哦！",
+                        btn: '确定'
+                    });
+                }
+            });
+           
+        })
+
+        $('.my-test').click(function () {
+            location.href = 'index.php';
+        })
+
+        $('.rank-btn').click(function () {
+            // 排行榜页面
+            getRankList(1);
+
+        })
+
+        var pageNum=1;
+        // 点击加载更多
+        $('.more-btn').click(function(){
+            pageNum++;
+
+            getRankList(pageNum);
+        })
+
+        // 获取排行榜信息
+        function getRankList(pagenum){
+          
+            if(isgetRank==true){
+                return;
+            }
+            layer.open({type: 2});
+            isgetRank=true;
+            $.ajax({
+                type: 'POST',
+                url: "common.php",
+                data: {
+                    get: 'rankInfo',
+                    page_num:pagenum,
+
+                },
+                dataType: 'json',
+                success: function(data) {
+                    layer.closeAll();
+                    isgetRank=false;
+                    var rank_str = $('#rank_list').html();
+                    var num = (pagenum-1)*10;
+                    for(i=0;i<data.length;i++){
+                        num++;
+                        rank_str += '<li>'+
+                            '<div class="xu">'+num+'</div>'+
+                            '<div class="nickname">'+data[i]['nickname']+'</div>'+
+                            '<div class="zannum">票数<span>'+data[i]['vote_num']+'</span></div>'+
+                        '</li>';
+                    }
+                    $('#rank_list').html(rank_str);
+                    $('.rank-page').fadeIn(350);
+                },
+                error: function(e) {
+                    isgetRank=false;
+                    layer.closeAll();
+                    layer.open({
+                        content: "网络不是很通畅，稍后再试哦！",
+                        btn: '确定'
+                    });
+                }
+            });
+        }
+
+
+        $('.close-rank').click(function () {
+            $('.rank-page').fadeOut(350);
+        })
+
+
+        $('.close-page1').click(function () {
+            $('.success-page').fadeOut(350);
+            $('.vote-page').fadeIn(350);
+        })
+
+
+
+        $('.share-btn').click(function () {
+            $('.share-page').fadeIn(350);
+        })
+        $('.share-page').on('click', function () {
+            $(this).fadeOut(350);
+        })
+
+    })
+
+// 空数据判断
+function isOpenID(wxid) {
+    if(wxid == null || typeof(wxid) == undefined || typeof(wxid) == null || wxid == "" || wxid <= 0 || wxid == "null" || wxid == "undefined") {
+        return false;
+    } else {
+        return true;
+    }
+}
+</script>
+
+
+</body>
+</html>
