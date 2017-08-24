@@ -1,0 +1,346 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+body,html {
+    width: 100%;
+    height: 100%;
+    font-family: "Microsoft YaHei", Arial;
+    background: #000;
+    overflow: hidden;
+}
+ul,li {
+    list-style: none;
+}
+img {
+    display: block;
+    width: 100%;
+}
+
+/*默认320 iphone5  */
+/*rem=screen.width/20 */
+html{ font-size: 16px;}
+/*iphone6*/
+@media (min-device-width: 375px) {
+    html{ font-size: 18.75px;}
+}
+/*iphone6 plus*/
+@media (min-device-width: 414px) {
+    html{ font-size: 20.7px;}
+}
+
+.loading {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    background: #000;
+}
+.loader {
+    margin: 0px auto;
+    font-size: 10px;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 5px solid rgba(255, 255, 255, 0.2);
+    border-right: 5px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 5px solid rgba(255, 255, 255, 0.2);
+    border-left: 5px solid #ffffff;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    animation: load8 1.1s infinite linear;
+}
+
+.loader,
+.loader:after {
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    top: 50%;
+    margin-top: -2rem;
+}
+
+@-webkit-keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.loadnum {
+    width: 100%;
+    text-align: center;
+    font-size: 0.6rem;
+    color: #fdf4f4;
+    top: 50%;
+    position: relative;
+    margin-top: -2.6rem;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: none;
+}
+.wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.page1 {
+    width: 100%;
+    height: 100%;
+}
+.flashAni {
+    -webkit-animation: flash 4s infinite;
+    animation: flash 4s infinite;
+}
+.anis {
+    opacity: 0;
+}
+.text01, .text02, .text03, .text04, .text05, .text06 {
+    display: none;
+}
+.fadeIn-btn {
+    -webkit-animation: fadeInUp 0.6s;
+    animation: fadeInUp 0.6s;
+}
+.year-select {
+    overflow: hidden;
+}
+.year {
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.year img {
+    width: 38.5%;
+}
+.year {
+    opacity: 0.5;
+    -webkit-transform: scale(0.85,0.85);
+    transform: scale(0.85,0.85);
+}
+#year-select .swiper-wrapper .swiper-slide-active {
+    opacity: 1;
+    -webkit-transform: scale(1,1);
+    transform: scale(1,1);
+}
+.per-list {
+    overflow: auto;
+    overflow-x: hidden;
+}
+.upload {
+    background: #000;
+}
+.reload-btn {
+    display: none;
+}
+input.fileupload {
+    width:100%;
+    height:100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+.stage {
+    opacity: 0;
+    background: #000;
+}
+.mod {
+    background: rgba(0,0,0,0.8);
+}
+.comp-tips, .vote-tips {
+    display: none;
+}
+.show01,.show02 {
+    overflow: hidden;
+}
+
+
+.per-list ul li {
+    width: 100%;
+    height: 80px;
+    background: url(../img/list-bg.png) no-repeat center;
+    background-size: 100%;
+    margin-bottom: 4px;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: #ffffff;
+}
+.per-list ul li .xuhao {
+    line-height: 80px;
+    font-size: 24px;
+    text-shadow: 0 0 6px #00c9ff;
+}
+.per-list ul li .head-icon {
+    width: 64px;
+    height: 70px;
+    position: relative;
+    margin-top: 7px;
+}
+.per-list ul li .head-icon p {
+    width: 40px;
+    height: 40px;
+    border: solid 2px #FFF;
+}
+.per-list ul li .head-icon p.icon-1 {
+
+}
+.per-list ul li .head-icon p.icon-2 {
+    position: absolute;
+    top: 22px;
+    left: 24px;
+}
+.per-list ul li .intimacy {
+    width: 80px;
+    height: 70px;
+    background: url(../img/gany-bg.png) no-repeat center;
+    background-size: 100%;
+    margin-top: 5px;
+}
+.intimacy p {
+    width: 70px;
+    text-align: center;
+    line-height: 52px;
+    font-size: 28px;
+    color: #fff;
+}
+.intimacy p span {
+    font-size: 18px;
+}
+.per-list ul li .votes {
+    line-height: 80px;
+    font-size: 22px;
+    font-weight: 700;
+}
+.xuhao, .nick-name {
+    line-height: 18px;
+    font-size: 0.5rem;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.head-pic {
+    border: solid 1px #fff;
+}
+.zan-num {
+    line-height: 66px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+}
+.pic-show {
+    display: block;
+}
+.pic-show img {
+    width: 100%;
+}
+.share-index {
+    background: #000;
+}
+.share-page {
+    background: rgba(0,0,0,0.8);
+}
+.yuanfen, .zan-number {
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 0 6px #00c9ff;
+    font-weight: bold;
+}
+.yuanfen {
+    line-height: 70px;
+    font-size: 2rem;
+}
+.zan-number {
+    line-height: 65px;
+    font-size: 1rem;
+}
+.rank-list {
+    overflow: auto;
+    overflow-x: hidden;
+}
+.rank-list ul li {
+    padding: 0 15px;
+    height: 50px;
+    background: url(../img/list-bg.png) no-repeat center;
+    background-size: 100% 100%;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+.rank-list ul li > div {
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    color: #fff;
+}
+.rank-list ul li .xu {
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 0 0 6px #00c9ff;
+}
+.rank-list ul li .nickname {
+    width: 50%;
+    text-align: center;
+    font-size: 0.75rem;
+    background: url(../img/nick-bg.png) no-repeat center;
+    background-size: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0 15px;
+}
+.rank-list ul li .zannum {
+    font-size: 0.75rem;
+    -webkit-flex: 1;
+    flex: 1;
+}
+.rank-list ul li .zannum span {
+    font-size: 1rem;
+    padding-left: 5px;
+    text-shadow: 0 0 6px #00c9ff;
+}
+.success-page {
+    display: none;
+}
+.vote-page {
+    display: block;
+}
